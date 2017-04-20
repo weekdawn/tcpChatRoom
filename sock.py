@@ -25,10 +25,10 @@ class TcpCreate:
 		self.s.listen(5)
 		print "creating chat room..."
 		ipaddr,port = self.s.getsockname()
-		print	"--------Chat Room---------\n"\
-				"--address : %s\n"\
-				"--port    : %s\n"\
-				"--------------------------" % (ipaddr,port)
+		print	"----------------Chat Room-------------------\n"\
+				"---------address : %s\n"\
+				"---------port    : %s\n"\
+				"--------------------------------------------" % (ipaddr,port)
 		while True:
 			conn, addr = self.s.accept()
 			ip,port = addr
