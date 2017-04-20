@@ -5,15 +5,15 @@ import threading
 class TcpCreate:
 	def __init__(self):
 		self.s = socket.socket()
+		self.clientIDs = []
 
 	def newSock(self,sock, addr):
-		ip,port = addr
+		client_ip, client_port = addr
 		while True:
 			sock.setblocking(True)
 			data = sock.recv(1024)
-			print "%s : %s" % (port, data)
+			print "%s : %s" % (client_port, data)
 			if data == 'q':
-				sock.send(data)
 				break
 			else:
 				sock.send(data)
