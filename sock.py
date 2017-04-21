@@ -12,8 +12,11 @@ class TcpCreate:
 		while True:
 			sock.setblocking(True)
 			data = sock.recv(1024)
-			print "%s : %s" % (client_port, data)
+			saveRecord = "%s : %s" % (client_port, data)
+			self.clientIDs.append(saveRecord)
+			print saveRecord
 			if data == 'q':
+				sock.send('quit')
 				break
 			else:
 				sock.send(data)
