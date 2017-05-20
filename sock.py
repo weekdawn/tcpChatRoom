@@ -5,15 +5,18 @@ import threading
 class TcpCreate:
 	def __init__(self):
 		self.s = socket.socket()
+		self.clientIDs = []
 
 	def newSock(self,sock, addr):
-		ip,port = addr
+		client_ip, client_port = addr
 		while True:
 			sock.setblocking(True)
 			data = sock.recv(1024)
-			print "%s : %s" % (port, data)
+			saveRecord = "%s : %s" % (client_port, data)
+			self.clientIDs.append(saveRecord)
+			print saveRecord
 			if data == 'q':
-				sock.send(data)
+				sock.send('quit')
 				break
 			else:
 				sock.send(data)
@@ -25,10 +28,10 @@ class TcpCreate:
 		self.s.listen(5)
 		print "creating chat room..."
 		ipaddr,port = self.s.getsockname()
-		print	"--------Chat Room---------\n"\
-				"--address : %s\n"\
-				"--port    : %s\n"\
-				"--------------------------" % (ipaddr,port)
+		print	"----------------Chat Room-------------------\n"\
+				"---------address : %s\n"\
+				"---------port    : %s\n"\
+				"--------------------------------------------" % (ipaddr,port)
 		while True:
 			conn, addr = self.s.accept()
 			ip,port = addr
