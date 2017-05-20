@@ -8,7 +8,7 @@ client_ip, client_port = s.getsockname()
 print "Join the Chat Room --%s : %s" % (server_ip,server_port)
 print "Your chatID is %s" % client_port
 while True:
-	s.send(raw_input('Me : '))
+	s.send(raw_input('Me(q to exit) : '))
 	data = s.recv(1024)
 	if data == 'quit':
 		break

@@ -31,6 +31,7 @@ class TcpCreate:
 		print	"----------------Chat Room-------------------\n"\
 				"---------address : %s\n"\
 				"---------port    : %s\n"\
+				"---------input 'q' to exit the Chat Room\n"\
 				"--------------------------------------------" % (ipaddr,port)
 		while True:
 			conn, addr = self.s.accept()
